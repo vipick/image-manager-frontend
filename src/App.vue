@@ -11,6 +11,14 @@
               <v-list-item-title>대시보드</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
+          <v-list-item link to="/image">
+            <v-list-item-action>
+              <v-icon>mdi-view-dashboard</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>이미지 관리</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
         </v-list>
       </v-navigation-drawer>
 

@@ -3,6 +3,7 @@ import {
   SET_PROFILE,
   DESTROY_ACCESS_TOKEN,
   DESTROY_PROFILE,
+  SET_IMAGES,
 } from "./mutations-types";
 import api from "@/api";
 import Cookies from "js-cookie";
@@ -28,5 +29,10 @@ export default {
   },
   [DESTROY_PROFILE](state) {
     state.profile = null;
+  },
+  [SET_IMAGES](state, images) {
+    if (images) {
+      state.images = images;
+    }
   },
 };
