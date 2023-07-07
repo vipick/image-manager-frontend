@@ -89,10 +89,10 @@ export default {
   //이미지 업로드
   async uploadImage({ commit }, payload) {
     commit;
-    const { imageURL } = payload;
+    const { img } = payload;
 
     let formData = new FormData();
-    formData.append("file", imageURL);
+    formData.append("img", img);
     try {
       return await api.post("/images/upload", formData, {
         headers: {

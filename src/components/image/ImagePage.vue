@@ -1,7 +1,7 @@
 <template>
   <div class="image-page">
     <span>이미지 관리</span>
-    <!-- <image-add-form @addImage="onClickAddImage" /> -->
+    <image-add-form @addImage="onClickAddImage" />
 
     <v-row justify="center" align="center">
       <v-simple-table>
@@ -32,14 +32,14 @@
 </template>
 
 <script>
-// import imageAddForm from "./ImageAddForm";
+import imageAddForm from "./ImageAddForm";
 import imageListView from "./ImageListView";
 import { mapActions, mapState } from "vuex";
 
 export default {
   name: "imagePage",
   components: {
-    // imageAddForm,
+    imageAddForm,
     imageListView,
   },
 

@@ -3,31 +3,20 @@
     <td>{{ index }}</td>
     <td>{{ image.name }}</td>
     <td>{{ image.fileSize }}</td>
-
     <td><v-img :src="image.imageURL" width="200px"></v-img></td>
     <td>{{ image.createdAt }}</td>
-    <!-- <td>
-      <advertiser-update-form
-        @advertiserUpdate="onClickAdvertiserUpdate"
-        :advertiser="advertiser"
-      />
-    </td> -->
-    <!-- <td>
-      <advertiser-delete-form
-        @advertiserDelete="onClickAdvertiserDelete"
-        :advertiser="advertiser"
-      />
-    </td> -->
+    <td>
+      <image-delete-form @imageDelete="onClickImageDelete" :image="image" />
+    </td>
   </tr>
 </template>
 
 <script>
-// import AdvertiserUpdateForm from "./AdvertiserUpdateForm";
-// import AdvertiserDeleteForm from "./AdvertiserDeleteForm";
+import ImageDeleteForm from "./ImageDeleteForm";
 import { mapActions } from "vuex";
 
 export default {
-  name: "AdvertiserView",
+  name: "ImageListView",
   props: {
     image: {
       type: Object,
@@ -37,19 +26,14 @@ export default {
     },
   },
   components: {
-    // AdvertiserUpdateForm,
-    // AdvertiserDeleteForm,
+    ImageDeleteForm,
   },
   methods: {
-    // async onClickAdvertiserUpdate(payload) {
-    //   await this.updateAdvertiser(payload);
-    //   await this.getAdvertisers();
-    // },
-    // async onClickAdvertiserDelete(id) {
-    //   await this.deleteAdvertiser(id);
-    //   await this.getAdvertisers();
-    // },
-    ...mapActions(["updateAdvertiser", "deleteAdvertiser", "getAdvertisers"]),
+    async onClickImageDelete(id) {
+      await this.deleteImage(id);
+      await this.getImages();
+    },
+    ...mapActions(["deleteImage", "getImages"]),
   },
 };
 </script>
