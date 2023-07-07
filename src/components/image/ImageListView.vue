@@ -2,8 +2,8 @@
   <tr class="image-list-view" v-if="image">
     <td>{{ index }}</td>
     <td>{{ image.name }}</td>
-    <td>{{ image.fileSize }}</td>
-    <td><v-img :src="image.imageURL" width="200px"></v-img></td>
+    <td>{{ image.fileSize }} ({{ (image.fileSize / 1000000).toFixed(1) }}MB)</td>
+    <td><v-img :src="image.imageURL" width="100px"></v-img></td>
     <td>{{ image.createdAt }}</td>
     <td>
       <image-delete-form @imageDelete="onClickImageDelete" :image="image" />

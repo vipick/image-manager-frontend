@@ -14,17 +14,29 @@
                 <v-col cols="12" sm="12" md="12">
                   <v-file-input
                     v-model="img"
+                    :rules="[(v) => !!v || '이미지 선택은 필수 입니다.']"
                     accept="image/*"
                     label="이미지 선택"
                     @change="onClickGetImage"
                   ></v-file-input>
                   <v-img :src="imageURL" width="100px"></v-img>
+                  <v-text v-if="imageURL"
+                    >{{ name }} ({{ (fileSize / 1000000).toFixed(1) }} MB)
+                  </v-text>
                 </v-col>
               </v-row>
 
               <v-row justify="center" align="center">
                 <v-spacer></v-spacer>
-                <v-btn outlined text @click="dialog = false">취소</v-btn>
+                <v-btn
+                  outlined
+                  text
+                  @click="
+                    (dialog = false), (name = ''), (imageURL = ''), (fileSize = ''), (img = '')
+                  "
+                  >취소</v-btn
+                >
+                <v-btn outlined @click="onClickAddImage">저장</v-btn>
               </v-row>
               <br />
             </v-container>
@@ -54,18 +66,22 @@ export default {
     //onChange 로 imgUrl를 얻는다.
     async onClickGetImage() {
       const res = await this.uploadImage(this);
-      console.log(res.data.data.imageURL);
       this.imageURL = res.data.data.imageURL;
       this.name = res.data.data.name;
       this.fileSize = res.data.data.fileSize;
     },
     onClickAddImage() {
-      // if (this.$refs.form.validate() == false) {
-      //   return;
-      // }
+      if (this.$refs.form.validate() == false) {
+        return;
+      }
 
       this.dialog = false;
+
       this.$emit("addImage", this);
+      this.name = "";
+      this.imageURL = "";
+      this.fileSize = "";
+      this.img = "";
     },
     ...mapActions(["uploadImage"]),
   },
