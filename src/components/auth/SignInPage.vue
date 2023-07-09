@@ -1,6 +1,6 @@
 <template>
   <div class="signin-page">
-    andbut 어드민 로그인
+    Image 어드민 로그인
     <sign-in-form @signin="onClickSignIn" />
   </div>
 </template>
@@ -17,7 +17,7 @@ export default {
   methods: {
     onClickSignIn(payload) {
       this.signin(payload).then(() => {
-        this.$router.push({ path: "/dashboard" });
+        this.$router.push({ path: "/image" });
       });
     },
 
