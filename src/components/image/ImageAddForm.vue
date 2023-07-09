@@ -14,7 +14,6 @@
                 <v-col cols="12" sm="12" md="12">
                   <v-file-input
                     v-model="img"
-                    :rules="[(v) => !!v || '이미지 선택은 필수 입니다.']"
                     accept="image/*"
                     label="이미지 선택"
                     @change="onClickGetImage"
@@ -70,11 +69,8 @@ export default {
       this.name = res.data.data.name;
       this.fileSize = res.data.data.fileSize;
     },
-    onClickAddImage() {
-      if (this.$refs.form.validate() == false) {
-        return;
-      }
 
+    onClickAddImage() {
       this.dialog = false;
 
       this.$emit("addImage", this);
