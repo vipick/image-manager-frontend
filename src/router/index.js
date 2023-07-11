@@ -10,13 +10,13 @@ export default new Router({
   routes: [
     //로그인
     {
-      path: "/signin",
+      path: "/admin/signin",
       component: SignInPage,
       name: "SignInPage",
     },
     //이미지
     {
-      path: "/image",
+      path: "/admin/image",
       component: ImagePage,
       name: "ImagePage",
     },

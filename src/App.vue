@@ -3,7 +3,7 @@
     <div v-if="isAuthorized">
       <v-navigation-drawer v-model="drawer" app clipped>
         <v-list dense>
-          <v-list-item link to="/image">
+          <v-list-item link to="/admin/image">
             <v-list-item-action>
               <v-icon>mdi-view-dashboard</v-icon>
             </v-list-item-action>
@@ -85,7 +85,7 @@ export default {
     },
     onClickSignout() {
       this.signout().then(() => {
-        this.$router.push({ path: "/signin" });
+        this.$router.push({ path: "/admin/signin" });
       });
     },
     ...mapActions(["signout"]),

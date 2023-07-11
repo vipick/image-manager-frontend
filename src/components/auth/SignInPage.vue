@@ -17,7 +17,7 @@ export default {
   methods: {
     onClickSignIn(payload) {
       this.signin(payload).then(() => {
-        this.$router.push({ path: "/image" });
+        this.$router.push({ path: "/admin/image" });
       });
     },
 
